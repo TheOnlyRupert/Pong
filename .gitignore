@@ -3,10 +3,11 @@
 /.idea
 /bin
 /obj
+/packages
+/Content/bin
+/Content/obj
 
 # Ignored Files:
 .gitattributes
 Pong.csproj
 Pong.sln
-packages/MonoGame.Framework.WindowsDX.3.6.0.1625/readme.txt
-packages/MonoGame.Framework.WindowsDX.3.6.0.1625/MonoGame.Framework.WindowsDX.3.6.0.1625.nupkg
