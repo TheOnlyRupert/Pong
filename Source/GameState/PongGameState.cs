@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Pong.Source.GameState {
     public class PongGameState : GameState {
-        private Texture2D _backgroundTexture;
+        //private Texture2D _backgroundTexture;
         private Ball _ball;
         private Debug _debug;
         private Paddles _paddles;
@@ -19,7 +19,7 @@ namespace Pong.Source.GameState {
         public override void LoadContent(ContentManager content) {
             _spriteBatch = new SpriteBatch(graphicsDevice);
 
-            _backgroundTexture = content.Load<Texture2D>("image/background");
+            //_backgroundTexture = content.Load<Texture2D>("image/background");
 
             _paddles = new Paddles(new[] {
                 content.Load<Texture2D>("tile/l_paddle"),
@@ -48,12 +48,12 @@ namespace Pong.Source.GameState {
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
-            graphicsDevice.Clear(Color.CornflowerBlue);
+            graphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
-            _spriteBatch.Draw(_backgroundTexture, new Rectangle(0, 0,
+            /*_spriteBatch.Draw(_backgroundTexture, new Rectangle(0, 0,
                 graphicsDevice.PresentationParameters.BackBufferWidth,
-                graphicsDevice.PresentationParameters.BackBufferHeight), Color.White);
+                graphicsDevice.PresentationParameters.BackBufferHeight), Color.White);*/
             _paddles.Draw(_spriteBatch);
             _score.Draw(_spriteBatch);
             _ball.Draw(_spriteBatch);

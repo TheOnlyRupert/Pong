@@ -7,10 +7,11 @@ namespace Pong.Source.GameState {
 
         public GameMain() {
             var graphics = new GraphicsDeviceManager(this) {
-                PreferredBackBufferWidth = 1280,
-                PreferredBackBufferHeight = 720,
+                PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width,
+                PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height,
                 SynchronizeWithVerticalRetrace = true
             };
+
             Window.AllowUserResizing = true;
 
             Window.Title = "Pong (TheOnlyRupert Version) - Dev";

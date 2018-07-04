@@ -4,7 +4,6 @@
 1. 3 Modes:  Player vs Player,  Player vs AI,  AI vs AI.
 2. Game/AI have 3 difficulty levels (change using 1, 2, and 3 on keyboard.
 3. Winner is first to 10 points.
-4. 
 
 #### Controls
 1. Left Player: W/S to move up and down, Hold Left-Shift to move 2x speed.
@@ -20,7 +19,8 @@ Download the latest release from [release page](https://github.com/TheOnlyRupert
 
 #### Requirements
 Microsoft [.NET Framework 4.6.1](https://www.microsoft.com/en-US/download/details.aspx?id=53344 "Microsoft's download page") or higher and Microsoft [Visual C++ 2015 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=53840 "Microsoft's download page").
-Monogame [version 3.6](http://www.monogame.net/2017/03/01/monogame-3-6/) "Monogame download page) or higher.
+
+Monogame [version 3.6](http://www.monogame.net/2017/03/01/monogame-3-6/ "Monogame download page") or higher.
 
 #### Technical
 1. Teach myself how to use math in 2D space and very basic AI.
