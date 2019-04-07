@@ -24,24 +24,28 @@ namespace Pong.Source.GameState {
         public override void UnloadContent() { }
 
         public override void Update(GameTime gameTime) {
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
                 GameStateManager.Instance.ChangeScreen(new PongGameState(graphicsDevice));
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
             graphicsDevice.Clear(Color.Purple);
 
             _spriteBatch.Begin();
-            if (_isLeftWinner)
+            if (_isLeftWinner) {
                 _spriteBatch.DrawString(_spriteFont, Reference.PlayerLWins, new Vector2(
-                    graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -
-                    _spriteFont.MeasureString(Reference.PlayerLWins).Length() / 2,
-                    graphicsDevice.PresentationParameters.BackBufferHeight / 3 + 0), Color.White);
-            else
+                        graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -
+                        _spriteFont.MeasureString(Reference.PlayerLWins).Length() / 2,
+                        graphicsDevice.PresentationParameters.BackBufferHeight / 3 + 0),
+                    Color.White);
+            } else {
                 _spriteBatch.DrawString(_spriteFont, Reference.PlayerRWins, new Vector2(
-                    graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -
-                    _spriteFont.MeasureString(Reference.PlayerRWins).Length() / 2,
-                    graphicsDevice.PresentationParameters.BackBufferHeight / 3 + 0), Color.White);
+                        graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -
+                        _spriteFont.MeasureString(Reference.PlayerRWins).Length() / 2,
+                        graphicsDevice.PresentationParameters.BackBufferHeight / 3 + 0),
+                    Color.White);
+            }
 
             _spriteBatch.DrawString(_spriteFont2, Reference.NewGame, new Vector2(
                 graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -

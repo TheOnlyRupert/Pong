@@ -17,7 +17,8 @@ namespace Pong.Source {
             _graphics = graphics;
 
             _lPaddlePosition = new Vector2(_lPaddleTexture.Width / 2 + 64,
-                _graphics.PresentationParameters.BackBufferHeight / 2 - _lPaddleTexture.Height / 2);
+                _graphics.PresentationParameters.BackBufferHeight / 2 -
+                _lPaddleTexture.Height / 2);
 
             _rPaddlePosition = new Vector2(
                 graphics.PresentationParameters.BackBufferWidth - _rPaddleTexture.Width / 2 - _rPaddleTexture.Width -
@@ -37,76 +38,92 @@ namespace Pong.Source {
             _rPaddlePosition.X = _graphics.PresentationParameters.BackBufferWidth - _rPaddleTexture.Width / 2 -
                                  _rPaddleTexture.Width - 64;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Insert)) _enableLai = true;
+            if (Keyboard.GetState().IsKeyDown(Keys.Insert)) {
+                _enableLai = true;
+            }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Delete)) _enableLai = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.Delete)) {
+                _enableLai = false;
+            }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.PageUp)) _enableRai = true;
+            if (Keyboard.GetState().IsKeyDown(Keys.PageUp)) {
+                _enableRai = true;
+            }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.PageDown)) _enableRai = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.PageDown)) {
+                _enableRai = false;
+            }
 
             if (!_enableLai) {
                 if (Keyboard.GetState().IsKeyDown(Keys.W) && _lPaddlePosition.Y > 0) {
-                    if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftShift)) {
                         _lPaddlePosition.Y -= Reference.PaddleSpeedFast;
-                    else
+                    } else {
                         _lPaddlePosition.Y -= Reference.PaddleSpeedNorm;
+                    }
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.S) && _lPaddlePosition.Y <
                     _graphics.PresentationParameters.BackBufferHeight - _lPaddleTexture.Height) {
-                    if (Keyboard.GetState().IsKeyDown(Keys.LeftShift))
+                    if (Keyboard.GetState().IsKeyDown(Keys.LeftShift)) {
                         _lPaddlePosition.Y += Reference.PaddleSpeedFast;
-                    else
+                    } else {
                         _lPaddlePosition.Y += Reference.PaddleSpeedNorm;
+                    }
                 }
             } else {
                 aiSpeed = (int) (ball.BallBoundingBox.Y + ball.BallBoundingBox.Height / 2 -
                                  (_lPaddlePosition.Y + (_lPaddleTexture.Height / 2 + 0)));
-                if (aiSpeed > Reference.PaddleMaxAISpeed * Reference.globalTimeFactor)
+                if (aiSpeed > Reference.PaddleMaxAISpeed * Reference.globalTimeFactor) {
                     aiSpeed = Reference.PaddleMaxAISpeed * Reference.globalTimeFactor;
-                else if (aiSpeed < -Reference.PaddleMaxAISpeed * Reference.globalTimeFactor)
+                } else if (aiSpeed < -Reference.PaddleMaxAISpeed * Reference.globalTimeFactor) {
                     aiSpeed = -Reference.PaddleMaxAISpeed * Reference.globalTimeFactor;
+                }
 
                 _lPaddlePosition.Y += aiSpeed;
 
-                if (_lPaddlePosition.Y < 0)
+                if (_lPaddlePosition.Y < 0) {
                     _lPaddlePosition.Y = 0;
-                else if (_lPaddlePosition.Y >
-                         _graphics.PresentationParameters.BackBufferHeight - _lPaddleTexture.Height)
+                } else if (_lPaddlePosition.Y >
+                           _graphics.PresentationParameters.BackBufferHeight - _lPaddleTexture.Height) {
                     _lPaddlePosition.Y = _graphics.PresentationParameters.BackBufferHeight - _lPaddleTexture.Height;
+                }
             }
 
             if (!_enableRai) {
                 if (Keyboard.GetState().IsKeyDown(Keys.Up) && _rPaddlePosition.Y > 0) {
-                    if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
+                    if (Keyboard.GetState().IsKeyDown(Keys.RightShift)) {
                         _rPaddlePosition.Y -= Reference.PaddleSpeedFast;
-                    else
+                    } else {
                         _rPaddlePosition.Y -= Reference.PaddleSpeedNorm;
+                    }
                 }
 
                 if (Keyboard.GetState().IsKeyDown(Keys.Down) && _rPaddlePosition.Y <
                     _graphics.PresentationParameters.BackBufferHeight - _rPaddleTexture.Height) {
-                    if (Keyboard.GetState().IsKeyDown(Keys.RightShift))
+                    if (Keyboard.GetState().IsKeyDown(Keys.RightShift)) {
                         _rPaddlePosition.Y += Reference.PaddleSpeedFast;
-                    else
+                    } else {
                         _rPaddlePosition.Y += Reference.PaddleSpeedNorm;
+                    }
                 }
             } else {
                 aiSpeed = (int) (ball.BallBoundingBox.Y + ball.BallBoundingBox.Height / 2 -
                                  (_rPaddlePosition.Y + (_rPaddleTexture.Height / 2 + 0)));
-                if (aiSpeed > Reference.PaddleMaxAISpeed * Reference.globalTimeFactor)
+                if (aiSpeed > Reference.PaddleMaxAISpeed * Reference.globalTimeFactor) {
                     aiSpeed = Reference.PaddleMaxAISpeed * Reference.globalTimeFactor;
-                else if (aiSpeed < -Reference.PaddleMaxAISpeed * Reference.globalTimeFactor)
+                } else if (aiSpeed < -Reference.PaddleMaxAISpeed * Reference.globalTimeFactor) {
                     aiSpeed = -Reference.PaddleMaxAISpeed * Reference.globalTimeFactor;
+                }
 
                 _rPaddlePosition.Y += aiSpeed;
 
-                if (_rPaddlePosition.Y < 0)
+                if (_rPaddlePosition.Y < 0) {
                     _rPaddlePosition.Y = 0;
-                else if (_rPaddlePosition.Y >
-                         _graphics.PresentationParameters.BackBufferHeight - _rPaddleTexture.Height)
+                } else if (_rPaddlePosition.Y >
+                           _graphics.PresentationParameters.BackBufferHeight - _rPaddleTexture.Height) {
                     _rPaddlePosition.Y = _graphics.PresentationParameters.BackBufferHeight - _rPaddleTexture.Height;
+                }
             }
         }
 

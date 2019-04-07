@@ -9,7 +9,7 @@ namespace Pong.Source.GameState {
             var graphics = new GraphicsDeviceManager(this) {
                 PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width,
                 PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height,
-                SynchronizeWithVerticalRetrace = true
+                SynchronizeWithVerticalRetrace = false
             };
 
             Window.AllowUserResizing = true;
@@ -29,7 +29,6 @@ namespace Pong.Source.GameState {
 
         protected override void LoadContent() {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
             GameStateManager.Instance.SetContent(Content);
             GameStateManager.Instance.AddScreen(new PongGameState(GraphicsDevice));
         }

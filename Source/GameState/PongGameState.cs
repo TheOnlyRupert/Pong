@@ -21,21 +21,21 @@ namespace Pong.Source.GameState {
 
             //_backgroundTexture = content.Load<Texture2D>("image/background");
 
-            _paddles = new Paddles(new[] {
-                content.Load<Texture2D>("tile/l_paddle"),
-                content.Load<Texture2D>("tile/r_paddle")
-            }, graphicsDevice);
+            _paddles = new Paddles(
+                new[] {content.Load<Texture2D>("tile/l_paddle"), content.Load<Texture2D>("tile/r_paddle")},
+                graphicsDevice);
 
-            _ball = new Ball(content.Load<Texture2D>("tile/ball"), new[] {
-                content.Load<SoundEffect>("sound/hit"), content.Load<SoundEffect>("sound/wall"),
-                content.Load<SoundEffect>("sound/miss1"), content.Load<SoundEffect>("sound/miss2")
-            }, graphicsDevice, content.Load<SpriteFont>("font/consolas_16"));
+            _ball = new Ball(content.Load<Texture2D>("tile/ball"),
+                new[] {
+                    content.Load<SoundEffect>("sound/hit"), content.Load<SoundEffect>("sound/wall"),
+                    content.Load<SoundEffect>("sound/miss1"), content.Load<SoundEffect>("sound/miss2")
+                }, graphicsDevice, content.Load<SpriteFont>("font/consolas_16"));
 
             _debug = new Debug(content.Load<SpriteFont>("font/consolas_16"), graphicsDevice);
 
-            _score = new Score(content.Load<SpriteFont>("font/consolas_32"), new[] {
-                content.Load<SoundEffect>("sound/background"), content.Load<SoundEffect>("sound/winner")
-            }, graphicsDevice);
+            _score = new Score(content.Load<SpriteFont>("font/consolas_32"),
+                new[] {content.Load<SoundEffect>("sound/background"), content.Load<SoundEffect>("sound/winner")},
+                graphicsDevice);
         }
 
         public override void UnloadContent() { }

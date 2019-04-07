@@ -20,7 +20,9 @@ namespace Pong.Source.GameState {
             try {
                 _screens.Push(screen);
                 _screens.Peek().Initialize();
-                if (_content != null) _screens.Peek().LoadContent(_content);
+                if (_content != null) {
+                    _screens.Peek().LoadContent(_content);
+                }
             } catch (Exception ex) { }
         }
 
@@ -32,12 +34,13 @@ namespace Pong.Source.GameState {
         }
 
         public void RemoveScreen() {
-            if (_screens.Count > 0)
+            if (_screens.Count > 0) {
                 try {
                     var screen = _screens.Peek();
 
                     _screens.Pop();
                 } catch (Exception ex) { }
+            }
         }
 
         public void ClearScreens() {
@@ -49,18 +52,24 @@ namespace Pong.Source.GameState {
         }
 
         public void UnloadContent() {
-            foreach (var state in _screens) state.UnloadContent();
+            foreach (var state in _screens) {
+                state.UnloadContent();
+            }
         }
 
         public void Update(GameTime gameTime) {
             try {
-                if (_screens.Count > 0) _screens.Peek().Update(gameTime);
+                if (_screens.Count > 0) {
+                    _screens.Peek().Update(gameTime);
+                }
             } catch (Exception ex) { }
         }
 
         public void Draw(SpriteBatch spriteBatch) {
             try {
-                if (_screens.Count > 0) _screens.Peek().Draw(spriteBatch);
+                if (_screens.Count > 0) {
+                    _screens.Peek().Draw(spriteBatch);
+                }
             } catch (Exception ex) { }
         }
     }

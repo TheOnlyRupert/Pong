@@ -97,7 +97,9 @@ namespace Pong.Source {
 
                     _xSpeed *= -1.1f;
                     /* Set speed limit */
-                    if (_xSpeed > Reference.BallMaxSpeed) _xSpeed = Reference.BallMaxSpeed;
+                    if (_xSpeed > Reference.BallMaxSpeed) {
+                        _xSpeed = Reference.BallMaxSpeed;
+                    }
 
                     _ySpeed = _xSpeed * ((float) (BallBoundingBox.Center.Y - paddles.LPaddleBoundingBox.Center.Y)
                                          / paddles.LPaddleBoundingBox.Height * 2);
@@ -109,7 +111,9 @@ namespace Pong.Source {
 
                     _xSpeed *= -1.1f;
                     /* Set speed limit */
-                    if (_xSpeed > Reference.BallMaxSpeed) _xSpeed = Reference.BallMaxSpeed;
+                    if (_xSpeed > Reference.BallMaxSpeed) {
+                        _xSpeed = Reference.BallMaxSpeed;
+                    }
 
                     _ySpeed = -_xSpeed * ((float) (BallBoundingBox.Center.Y - paddles.RPaddleBoundingBox.Center.Y)
                                           / paddles.RPaddleBoundingBox.Height * 2);
@@ -126,10 +130,11 @@ namespace Pong.Source {
             } else {
                 spriteBatch.Draw(_ballTexture, _ballPosition, Color.White);
 
-                if (Reference.enableDrawBoundingBox)
+                if (Reference.enableDrawBoundingBox) {
                     spriteBatch.Draw(_ballTexture,
                         new Rectangle(BallBoundingBox.X, BallBoundingBox.Y, BallBoundingBox.Width,
                             BallBoundingBox.Height), Color.Black);
+                }
             }
         }
     }
