@@ -34,24 +34,34 @@ namespace Pong.Source.GameState {
 
             _spriteBatch.Begin();
             if (_isLeftWinner) {
-                _spriteBatch.DrawString(_spriteFont, Reference.PlayerLWins, new Vector2(
+                _spriteBatch.DrawString(
+                    _spriteFont, Reference.PlayerLWins,
+                    new Vector2(
                         graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -
                         _spriteFont.MeasureString(Reference.PlayerLWins).Length() / 2,
-                        graphicsDevice.PresentationParameters.BackBufferHeight / 3 + 0),
-                    Color.White);
+                        graphicsDevice.PresentationParameters.BackBufferHeight / 3 + 0
+                    ), Color.White
+                );
             } else {
-                _spriteBatch.DrawString(_spriteFont, Reference.PlayerRWins, new Vector2(
+                _spriteBatch.DrawString(
+                    _spriteFont, Reference.PlayerRWins,
+                    new Vector2(
                         graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -
                         _spriteFont.MeasureString(Reference.PlayerRWins).Length() / 2,
-                        graphicsDevice.PresentationParameters.BackBufferHeight / 3 + 0),
-                    Color.White);
+                        graphicsDevice.PresentationParameters.BackBufferHeight / 3 + 0
+                    ), Color.White
+                );
             }
 
-            _spriteBatch.DrawString(_spriteFont2, Reference.NewGame, new Vector2(
-                graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -
-                _spriteFont2.MeasureString(Reference.NewGame).Length() / 2,
-                graphicsDevice.PresentationParameters.BackBufferHeight -
-                graphicsDevice.PresentationParameters.BackBufferHeight / 4 + 0), Color.White);
+            _spriteBatch.DrawString(
+                _spriteFont2, Reference.NewGame,
+                new Vector2(
+                    graphicsDevice.PresentationParameters.BackBufferWidth / 2 + 0 -
+                    _spriteFont2.MeasureString(Reference.NewGame).Length() / 2,
+                    graphicsDevice.PresentationParameters.BackBufferHeight -
+                    graphicsDevice.PresentationParameters.BackBufferHeight / 4 + 0
+                ), Color.White
+            );
             _spriteBatch.End();
         }
     }

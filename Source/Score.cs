@@ -34,12 +34,16 @@ namespace Pong.Source {
         }
 
         public void Draw(SpriteBatch spriteBatch) {
-            var score = lScore + "  -  " + rScore;
+            string score = lScore + "  -  " + rScore;
 
-            spriteBatch.DrawString(_scoreText, score, new Vector2(
-                _graphics.PresentationParameters.BackBufferWidth / 2 + 0 -
-                _scoreText.MeasureString(score).Length() / 2,
-                _graphics.PresentationParameters.BackBufferHeight / 32 + 0), Color.White);
+            spriteBatch.DrawString(
+                _scoreText, score,
+                new Vector2(
+                    _graphics.PresentationParameters.BackBufferWidth / 2 + 0 -
+                    _scoreText.MeasureString(score).Length() / 2,
+                    _graphics.PresentationParameters.BackBufferHeight / 32 + 0
+                ), Color.White
+            );
         }
     }
 }

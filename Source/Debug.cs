@@ -43,16 +43,18 @@ namespace Pong.Source {
 
         public void Draw(SpriteBatch spriteBatch) {
             _frameCounter++;
-            var fps = $"fps: {_frameRate}\nmem: {GC.GetTotalMemory(false)}";
-            var timeFactor = $"Time Factor: {Reference.globalTimeFactor}x ";
+            string fps = $"fps: {_frameRate}\nmem: {GC.GetTotalMemory(false)}";
+            string timeFactor = $"Time Factor: {Reference.globalTimeFactor}x ";
 
             spriteBatch.DrawString(_debugFont, fps, new Vector2(0, 0), Color.White);
 
-            spriteBatch.DrawString(_debugFont, timeFactor, new Vector2(
-                    _graphics.PresentationParameters.BackBufferWidth -
-                    _debugFont.MeasureString(timeFactor).Length(),
-                    _graphics.PresentationParameters.BackBufferHeight - _debugFont.LineSpacing),
-                Color.White);
+            spriteBatch.DrawString(
+                _debugFont, timeFactor,
+                new Vector2(
+                    _graphics.PresentationParameters.BackBufferWidth - _debugFont.MeasureString(timeFactor).Length(),
+                    _graphics.PresentationParameters.BackBufferHeight - _debugFont.LineSpacing
+                ), Color.White
+            );
         }
     }
 }

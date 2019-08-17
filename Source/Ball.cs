@@ -25,18 +25,22 @@ namespace Pong.Source {
             _wallSoundEffect = soundEffectList[1];
             _miss1SoundEffect = soundEffectList[2];
             _miss2SoundEffect = soundEffectList[3];
-            _ballPosition = new Vector2(_graphics.PresentationParameters.BackBufferWidth / 2 - _ballTexture.Width / 2,
-                _graphics.PresentationParameters.BackBufferHeight / 2 - _ballTexture.Height / 2);
+            _ballPosition = new Vector2(
+                _graphics.PresentationParameters.BackBufferWidth / 2 - _ballTexture.Width / 2,
+                _graphics.PresentationParameters.BackBufferHeight / 2 - _ballTexture.Height / 2
+            );
         }
 
-        public Rectangle BallBoundingBox => new Rectangle((int) _ballPosition.X, (int) _ballPosition.Y,
-            _ballTexture.Width, _ballTexture.Height);
+        public Rectangle BallBoundingBox =>
+            new Rectangle((int) _ballPosition.X, (int) _ballPosition.Y, _ballTexture.Width, _ballTexture.Height);
 
         private void NewRound(bool isPlayerLeft) {
-            _ballPosition = new Vector2(_graphics.PresentationParameters.BackBufferWidth / 2 - _ballTexture.Width / 2,
-                _graphics.PresentationParameters.BackBufferHeight / 2 - _ballTexture.Height / 2);
+            _ballPosition = new Vector2(
+                _graphics.PresentationParameters.BackBufferWidth / 2 - _ballTexture.Width / 2,
+                _graphics.PresentationParameters.BackBufferHeight / 2 - _ballTexture.Height / 2
+            );
 
-            var rand = new Random();
+            Random rand = new Random();
             if (isPlayerLeft) {
                 if (rand.Next(0, 2) == 0) {
                     _xSpeed = -Reference.BallStartingSpeed;
@@ -59,7 +63,7 @@ namespace Pong.Source {
         public void Update(Paddles paddles) {
             if (!_isNewGame) {
                 if (Keyboard.GetState().IsKeyDown(Keys.Space)) {
-                    var rand = new Random();
+                    Random rand = new Random();
                     NewRound(rand.Next(0, 2) == 1);
                     _isNewGame = !_isNewGame;
                 }
@@ -101,8 +105,8 @@ namespace Pong.Source {
                         _xSpeed = Reference.BallMaxSpeed;
                     }
 
-                    _ySpeed = _xSpeed * ((float) (BallBoundingBox.Center.Y - paddles.LPaddleBoundingBox.Center.Y)
-                                         / paddles.LPaddleBoundingBox.Height * 2);
+                    _ySpeed = _xSpeed * ((float) (BallBoundingBox.Center.Y - paddles.LPaddleBoundingBox.Center.Y) /
+                        paddles.LPaddleBoundingBox.Height * 2);
                 }
 
                 if (BallBoundingBox.Intersects(paddles.RPaddleBoundingBox)) {
@@ -115,25 +119,32 @@ namespace Pong.Source {
                         _xSpeed = Reference.BallMaxSpeed;
                     }
 
-                    _ySpeed = -_xSpeed * ((float) (BallBoundingBox.Center.Y - paddles.RPaddleBoundingBox.Center.Y)
-                                          / paddles.RPaddleBoundingBox.Height * 2);
+                    _ySpeed = -_xSpeed * ((float) (BallBoundingBox.Center.Y - paddles.RPaddleBoundingBox.Center.Y) /
+                        paddles.RPaddleBoundingBox.Height * 2);
                 }
             }
         }
 
         public void Draw(SpriteBatch spriteBatch) {
             if (!_isNewGame) {
-                spriteBatch.DrawString(_newGameText, Reference.NewGame, new Vector2(
-                    _graphics.PresentationParameters.BackBufferWidth / 2 + 0 -
-                    _newGameText.MeasureString(Reference.NewGame).Length() / 2,
-                    _graphics.PresentationParameters.BackBufferHeight / 2 + 0), Color.White);
+                spriteBatch.DrawString(
+                    _newGameText, Reference.NewGame,
+                    new Vector2(
+                        _graphics.PresentationParameters.BackBufferWidth / 2 + 0 -
+                        _newGameText.MeasureString(Reference.NewGame).Length() / 2,
+                        _graphics.PresentationParameters.BackBufferHeight / 2 + 0
+                    ), Color.White
+                );
             } else {
                 spriteBatch.Draw(_ballTexture, _ballPosition, Color.White);
 
                 if (Reference.enableDrawBoundingBox) {
-                    spriteBatch.Draw(_ballTexture,
-                        new Rectangle(BallBoundingBox.X, BallBoundingBox.Y, BallBoundingBox.Width,
-                            BallBoundingBox.Height), Color.Black);
+                    spriteBatch.Draw(
+                        _ballTexture,
+                        new Rectangle(
+                            BallBoundingBox.X, BallBoundingBox.Y, BallBoundingBox.Width, BallBoundingBox.Height
+                        ), Color.Black
+                    );
                 }
             }
         }

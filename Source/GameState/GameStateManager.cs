@@ -36,7 +36,7 @@ namespace Pong.Source.GameState {
         public void RemoveScreen() {
             if (_screens.Count > 0) {
                 try {
-                    var screen = _screens.Peek();
+                    GameState screen = _screens.Peek();
 
                     _screens.Pop();
                 } catch (Exception ex) { }
@@ -45,14 +45,14 @@ namespace Pong.Source.GameState {
 
         public void ClearScreens() {
             while (_screens.Count > 0) {
-                var screen = _screens.Peek();
+                GameState screen = _screens.Peek();
 
                 _screens.Pop();
             }
         }
 
         public void UnloadContent() {
-            foreach (var state in _screens) {
+            foreach (GameState state in _screens) {
                 state.UnloadContent();
             }
         }
